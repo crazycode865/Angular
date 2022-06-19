@@ -1,0 +1,18 @@
+* {
+  display: table-column;
+  flex-direction: row;
+  /* background: url(src/assets/images/movie10.jpg); */
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+mat-card {
+  display: inline-table;
+  margin: 20px;
+}

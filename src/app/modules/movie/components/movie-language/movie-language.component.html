@@ -1,0 +1,10 @@
+<div>
+  <mat-toolbar color="accent" class="mat-elevation-z6">
+    <div *ngFor="let language of languageArray">
+      <button mat-button [routerLink]="['/language', language.toLowerCase()]">
+        {{ language }}
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+<router-outlet></router-outlet>

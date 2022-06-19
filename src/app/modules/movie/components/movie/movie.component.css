@@ -1,0 +1,17 @@
+* {
+  display: table-column;
+  flex-direction: row;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+mat-card {
+  display: inline-table;
+  margin: 20px;
+}

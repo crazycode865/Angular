@@ -1,0 +1,10 @@
+<div>
+  <mat-toolbar class="mat-elevation-z6">
+    <div *ngFor="let format of formatsArray">
+      <button mat-button [routerLink]="['/format', format.toLowerCase()]">
+        {{ format }}
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,108 @@
+<!-- <div>
+  <mat-toolbar color="accent" class="mat-elevation-z6">
+    <span>MoviesTan🏰</span>
+    <mat-icon arial-hidden="false" aria-label="{2:label} icon">echo</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="Enter Your Choice" />
+      <button mat-icon-button>
+        <mat-icon aria-label="label">search</mat-icon>
+      </button>
+    </mat-form-field>
+    <span [ngClass]="'filler'"></span>
+    <button mat-raised-button routerLink="/signup" color="warn">Signup</button>
+    <button mat-raised-button routerLink="/login" color="primary">Login</button>
+  </mat-toolbar>
+</div>
+<div>
+  <mat-toolbar color="primary" class="mat-elevation-z6">
+    <span>
+      <mat-icon arial-hidden="false" aria-label="{2:label} icon}"
+        >home</mat-icon
+      >
+    </span>
+    <div>
+      <button mat-button routerLink="/home">Home</button>
+    </div>
+    <div>
+      <button mat-button [matMenuTriggerFor]="menu1">Genre</button>
+      <mat-menu #menu1="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let genre of genreArray"
+          [routerLink]="['/genre', genre.toLowerCase()]"
+        >
+          {{ genre }}
+        </button>
+      </mat-menu>
+    </div>
+    <div>
+      <button mat-button [matMenuTriggerFor]="menu2">Language</button>
+      <mat-menu #menu2="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let language of languageArray"
+          [routerLink]="['/movie', language.toLowerCase()]"
+        >
+          {{ language }}
+        </button>
+      </mat-menu>
+    </div>
+    <div>
+      <button mat-button [matMenuTriggerFor]="menu3">Type</button>
+      <mat-menu #menu3="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let type of typeArray"
+          [routerLink]="['/movie', type.toLowerCase()]"
+        >
+          {{ type }}
+        </button>
+      </mat-menu>
+    </div>
+    <div>
+      <button mat-button [matMenuTriggerFor]="menu4">Format</button>
+      <mat-menu #menu4="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let format of formatArray"
+          [routerLink]="['/movie', format.toLowerCase()]"
+        >
+          {{ format }}
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+</div> -->
+
+<div>
+  <mat-toolbar color="accent" class="mat-elevation-z6">
+    <span>BookMyShow🏰</span>
+    <mat-icon arial-hidden="false" aria-label="{2:label} icon">echo</mat-icon>
+
+    <mat-form-field>
+      <input matInput placeholder="Enter Your Choice" />
+      <button mat-icon-button>
+        <mat-icon aria-label="label">search</mat-icon>
+      </button>
+    </mat-form-field>
+    <span [ngClass]="'filler'"></span>
+    <button mat-raised-button routerLink="/signup" color="warn">Signup</button>
+    <button mat-raised-button routerLink="/login" color="primary">Login</button>
+  </mat-toolbar>
+</div>
+<div>
+  <mat-toolbar color="primary" class="mat-elevation-z6">
+    <span>
+      <mat-icon arial-hidden="false" aria-label="{2:label} icon}"
+        >menu</mat-icon
+      >
+    </span>
+    <div>
+      <button mat-button [routerLink]="['/home']">Home</button>
+      <button mat-button [routerLink]="['/genre']">Genre</button>
+      <button mat-button [routerLink]="['/type']">Type</button>
+      <button mat-button [routerLink]="['/language']">Language</button>
+      <button mat-button [routerLink]="['/format']">Format</button>
+    </div>
+  </mat-toolbar>
+</div>
