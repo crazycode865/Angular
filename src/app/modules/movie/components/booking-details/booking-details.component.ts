@@ -10,6 +10,6 @@ import { MovieService } from '../../services/movie.service';
 })
 export class BookingDetailsComponent implements OnInit {
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+   
   }
 }

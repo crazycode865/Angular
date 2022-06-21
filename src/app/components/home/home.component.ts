@@ -12,16 +12,13 @@ import { MovieService } from 'src/app/modules/movie/services/movie.service';
 export class HomeComponent implements OnInit {
   movies: Movie[] = [];
 
-  constructor(
-    private _movieService: MovieService,
-    private _router: Router,
-    private _activatedRoute: ActivatedRoute
-  ) {}
+  constructor(private _movieService: MovieService, private _router: Router) {}
   ngOnInit(): void {
     this._movieService.getAllMovies().subscribe({
       next: (data) => (this.movies = data),
       complete: () => console.log(`getting  all movies in home component`),
     });
+    console.log(this.movies);
   }
 
   onSubmit = (movie: Movie) => {

@@ -4,3 +4,6 @@
 /* button {
   margin: 2px;
 } */
+mat-toolbar {
+  background-color: #4682b4;
+}

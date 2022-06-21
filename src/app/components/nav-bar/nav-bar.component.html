@@ -75,8 +75,8 @@
 </div> -->
 
 <div>
-  <mat-toolbar color="accent" class="mat-elevation-z6">
-    <span>BookMyShow🏰</span>
+  <mat-toolbar class="mat-elevation-z6">
+    <span>MoviesTan🏰</span>
     <mat-icon arial-hidden="false" aria-label="{2:label} icon">echo</mat-icon>
 
     <mat-form-field>
@@ -91,18 +91,18 @@
   </mat-toolbar>
 </div>
 <div>
-  <mat-toolbar color="primary" class="mat-elevation-z6">
+  <mat-toolbar class="mat-elevation-z6">
     <span>
       <mat-icon arial-hidden="false" aria-label="{2:label} icon}"
         >menu</mat-icon
       >
     </span>
-    <div>
-      <button mat-button [routerLink]="['/home']">Home</button>
-      <button mat-button [routerLink]="['/genre']">Genre</button>
-      <button mat-button [routerLink]="['/type']">Type</button>
-      <button mat-button [routerLink]="['/language']">Language</button>
-      <button mat-button [routerLink]="['/format']">Format</button>
+
+    <button mat-button [routerLink]="['/home']">Home</button>
+    <div *ngFor="let category of categories">
+      <button mat-button [routerLink]="['/movie', category.toLowerCase()]">
+        {{ category | titlecase }}
+      </button>
     </div>
   </mat-toolbar>
 </div>

@@ -20,39 +20,13 @@ export class MovieService {
   };
 
   // Get All Distincts
-  getDistinctLanguage = (): Observable<string[]> => {
-    let url = `${this._baseUrl}/language/distinct`;
+  getByCategory = (category: string): Observable<string[]> => {
+    let url = `${this._baseUrl}/category/${category}`;
     return this.httpClient.get<string[]>(url);
   };
 
-  getDistinctGenre = (): Observable<string[]> => {
-    let url = `${this._baseUrl}/genre/distinct`;
-    return this.httpClient.get<string[]>(url);
-  };
-  getDistinctFormat = (): Observable<string[]> => {
-    let url = `${this._baseUrl}/format/distinct`;
-    return this.httpClient.get<string[]>(url);
-  };
-
-  getDistinctType = (): Observable<string[]> => {
-    let url = `${this._baseUrl}/type/distinct`;
-    return this.httpClient.get<string[]>(url);
-  };
-
-  getByGenre = (genre: string): Observable<Movie[]> => {
-    let url = `${this._baseUrl}/genre/${genre}`;
-    return this.httpClient.get<Movie[]>(url);
-  };
-  getByLanguage = (language: string): Observable<Movie[]> => {
-    let url = `${this._baseUrl}/language/${language}`;
-    return this.httpClient.get<Movie[]>(url);
-  };
-  getByType = (type: string): Observable<Movie[]> => {
-    let url = `${this._baseUrl}/type/${type}`;
-    return this.httpClient.get<Movie[]>(url);
-  };
-  getByFormat = (format: string): Observable<Movie[]> => {
-    let url = `${this._baseUrl}/format/${format}`;
+  getByChoice = (type: string): Observable<Movie[]> => {
+    let url = `${this._baseUrl}/choice/${type}`;
     return this.httpClient.get<Movie[]>(url);
   };
 }

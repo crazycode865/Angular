@@ -10,11 +10,10 @@ import { BookingDetailsComponent } from './components/booking-details/booking-de
 import { SharedModule } from '../shared/shared.module';
 import { MovieRoutingModule } from './movie-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { MovieFormatComponent } from './components/movie-format/movie-format.component';
-import { MovieGenreComponent } from './components/movie-genre/movie-genre.component';
-import { MovieLanguageComponent } from './components/movie-language/movie-language.component';
-import { MovieTypeComponent } from './components/movie-type/movie-type.component';
-
+import { MovieCategoryComponent } from './components/movie-category/movie-category.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { BookingComponent } from './components/booking/booking.component';
 @NgModule({
   declarations: [
     MovieComponent,
@@ -24,11 +23,17 @@ import { MovieTypeComponent } from './components/movie-type/movie-type.component
     TheatreDetailsComponent,
     BookingDetailsComponent,
     MovieComponent,
-    MovieFormatComponent,
-    MovieGenreComponent,
-    MovieLanguageComponent,
-    MovieTypeComponent,
+    MovieCategoryComponent,
+    BookingComponent,
   ],
-  imports: [CommonModule, SharedModule, MovieRoutingModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MovieRoutingModule,
+    HttpClientModule,
+  ],
+  exports: [BookingComponent],
 })
 export class MovieModule {}

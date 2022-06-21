@@ -1,5 +1,3 @@
-import { Shows } from './shows';
-
 export interface Movie {
   movieId: number;
   movieName: string;
