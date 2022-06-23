@@ -3,17 +3,21 @@
     <div class="header">
       <h2>LOGIN</h2>
     </div>
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
       <div class="email-input">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput />
+          <input matInput formControlName="username" />
         </mat-form-field>
       </div>
       <div>
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" />
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+          />
           <button
             mat-icon-button
             matSuffix
@@ -25,7 +29,7 @@
           </button>
         </mat-form-field>
       </div>
-      <button mat-flat-button color="primary">Login</button>
+      <button mat-raised-button type="submit" color="primary">Login</button>
     </form>
   </mat-card-content>
 </mat-card>

@@ -10,6 +10,7 @@ import { SharedModule } from './modules/shared/shared.module';
 import { LoginComponent } from './components/login/login.component';
 import { MovieModule } from './modules/movie/movie.module';
 import { BookingComponent } from './modules/movie/components/booking/booking.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { BookingComponent } from './modules/movie/components/booking/booking.com
     MovieModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

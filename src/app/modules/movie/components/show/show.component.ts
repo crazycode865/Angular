@@ -25,6 +25,7 @@ export class ShowComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe((map) => {
       let sId = map.get('id');
       if (sId) this.showId = parseInt(sId);
+      console.log(this.showId);
       console.log('Inside movie component');
 
       this._showService.getById(this.showId).subscribe({

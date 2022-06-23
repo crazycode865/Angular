@@ -14,6 +14,7 @@ import { MovieCategoryComponent } from './components/movie-category/movie-catego
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BookingComponent } from './components/booking/booking.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     MovieComponent,
@@ -32,6 +33,8 @@ import { BookingComponent } from './components/booking/booking.component';
     MatDividerModule,
     MatFormFieldModule,
     MovieRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   exports: [BookingComponent],

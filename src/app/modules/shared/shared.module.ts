@@ -13,6 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 const modules = [
   MatButtonModule,
   MatIconModule,
@@ -27,6 +28,7 @@ const modules = [
   MatMenuModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatSnackBarModule,
 ];
 @NgModule({
   declarations: [],
