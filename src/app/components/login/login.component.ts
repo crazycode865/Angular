@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/modules/movie/models/user';
 import { LoginService } from 'src/app/modules/movie/services/login.service';
@@ -12,12 +13,13 @@ import { LoginService } from 'src/app/modules/movie/services/login.service';
 export class LoginComponent implements OnInit {
   hide = true;
   retUrl: string = '';
+  loggedIn = false;
   // loginForm!: FormGroup;
-  user!: User;
   constructor(
     private _router: Router,
     private _loginService: LoginService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -27,23 +29,32 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginForm = new FormGroup({
+  user = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
-  onSubmit = (loginForm: FormGroup) => {
-    let user = loginForm.value;
-    console.log(user);
-    this._loginService.loginUser(user.username, user.password).subscribe({
-      next: (data: boolean) => {
-        if (!data) this._router.navigate(['home']);
-        else if (data && this.retUrl != '') {
-          console.log(`${data}`);
-          this._router.navigate([this.retUrl]);
-        } else {
-          this._router.navigate(['home']);
-        }
-      },
-    });
+  openSnackBar = (message: string, action: string) => {
+    this.snackBar.open(message, action);
+  };
+  onSubmit = (loginInfo: FormGroup) => {
+    if (
+      loginInfo.value.username != '' &&
+      loginInfo.value.password != '' &&
+      loginInfo.value.username != null &&
+      loginInfo.value.password != null
+    ) {
+      this._loginService.generateToken(loginInfo.value).subscribe({
+        next: (response: any) => {
+          this._loginService.loginUser(response);
+          localStorage.setItem('token', response);
+          if (!response) this._router.navigate(['login']);
+          else if (response && this.retUrl === '') {
+            this._router.navigate(['home']);
+          } else if (response && this.retUrl != '') {
+            this._router.navigate([this.retUrl]);
+          }
+        },
+      });
+    }
   };
 }

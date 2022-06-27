@@ -24,6 +24,7 @@ const routes: Routes = [
   {
     path: 'show/:id',
     component: ShowComponent,
+    canActivate: [AuthGuardService],
   },
   { path: 'booking/:id', component: BookingComponent },
   { path: 'booking-details/:booking-id', component: BookingDetailsComponent },

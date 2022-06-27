@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -26,9 +27,9 @@ export class AuthGuardService implements CanActivate {
       console.log('Hello User....');
       return true;
     } else {
-      alert('Please login first....');
+      // alert('Please login first....');
       this._router.navigate(['login'], {
-        queryParams: { returnUrl: route.url },
+        queryParams: { returnUrl: state.url },
       });
       return false;
     }

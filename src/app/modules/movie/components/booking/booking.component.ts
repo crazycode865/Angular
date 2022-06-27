@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 import { Booking } from '../../models/booking';
 import { BookingService } from '../../services/booking.service';
 
@@ -41,11 +42,4 @@ export class BookingComponent implements OnInit {
     });
     alert('Movie is Booked Successfully');
   };
-
-  // durationInSeconds = 5;
-  // openSnackBar() {
-  //   this._snackBar.openFromComponent(BookingComponent, {
-  //     duration: this.durationInSeconds * 1000,
-  //   });
-  // }
 }

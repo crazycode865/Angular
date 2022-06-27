@@ -3,7 +3,7 @@
     <div class="header">
       <h2>LOGIN</h2>
     </div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+    <form [formGroup]="user" (ngSubmit)="onSubmit(user)">
       <div class="email-input">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Email</mat-label>
@@ -29,7 +29,15 @@
           </button>
         </mat-form-field>
       </div>
-      <button mat-raised-button type="submit" color="primary">Login</button>
+      <button
+        mat-raised-button
+        type="submit"
+        color="primary"
+        (click)="openSnackBar('Wow...! Logged in Successfully', 'Dismiss')"
+      >
+        Login
+      </button>
     </form>
   </mat-card-content>
 </mat-card>
+<!-- {{ credential | json }} -->

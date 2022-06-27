@@ -29,4 +29,8 @@ export class MovieService {
     let url = `${this._baseUrl}/choice/${type}`;
     return this.httpClient.get<Movie[]>(url);
   };
+  getMovieStartsWith=(choice:string):Observable<Movie[]>=>{
+    let url = `${this._baseUrl}/startsWith/${choice}`;
+    return this.httpClient.get<Movie[]>(url);
+  }
 }

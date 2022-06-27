@@ -10,7 +10,8 @@ import { SharedModule } from './modules/shared/shared.module';
 import { LoginComponent } from './components/login/login.component';
 import { MovieModule } from './modules/movie/movie.module';
 import { BookingComponent } from './modules/movie/components/booking/booking.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './components/search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,11 +19,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavBarComponent,
     PageNotFoundComponent,
     LoginComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     SharedModule,
     MovieModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,

@@ -1,4 +1,8 @@
-<mat-card class="example-card mat-elevation-z6" *ngFor="let movie of movies">
+{{ movies | json }}
+<mat-card
+  class="example-card mat-elevation-z6"
+  *ngFor="let movie of searchValue"
+>
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title [ngStyle]="{ 'text-align': 'center' }">{{
@@ -21,7 +25,6 @@
       color="warn"
       mat-raised-button
       [routerLink]="['/show', movie.movieId]"
-      (click)="openSnackBar('Please Log in First...', 'Dismiss')"
     >
       Book
     </button>
