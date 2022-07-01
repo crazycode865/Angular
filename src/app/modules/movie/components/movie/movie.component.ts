@@ -6,6 +6,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie.service';
 import { TheatreDetailsComponent } from '../theatre-details/theatre-details.component';
@@ -27,17 +28,13 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(`in movie`);
-    this._activatedRoute.paramMap.subscribe((map) => {
+    this._activatedRoute.paramMap.pipe(switchMap((map)=>{
       let typ = map.get('type');
       if (typ) this.type = typ;
-      console.log('Inside movie component');
-
-      this._movieService.getByChoice(this.type).subscribe({
-        next: (data) => {
-          (this.movies = data), console.log(this.movies);
-        },
-      });
-    });
+      return this._movieService.getByChoice(this.type)
+    })).subscribe( 
+     (data:Movie[])=>this.movies= data
+    );
   }
 
   onSubmit = (movie: Movie) => {

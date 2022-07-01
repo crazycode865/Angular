@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
+import { ActivatedRoute, ParamMap, Params } from '@angular/router';
+import { map, switchMap } from 'rxjs';
 import { MovieService } from '../../services/movie.service';
 
 @Component({
@@ -17,14 +17,24 @@ export class MovieCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._activatedRoute.paramMap.subscribe((map) => {
-      let cat = map.get('category');
-      if (cat) this.category = cat;
-      console.log(this.category);
+    //   this._activatedRoute.paramMap.subscribe((map) => {
+    //     let cat = map.get('category');
+    //     if (cat) this.category = cat;
+    //     console.log(this.category);
 
-      this._movieService.getByCategory(this.category).subscribe({
-        next: (data) => (this.typesArray = data),
-      });
-    });
+    //     this._movieService.getByCategory(this.category).subscribe({
+    //       next: (data) => (this.typesArray = data),
+    //     });
+    //   });
+
+    this._activatedRoute.paramMap
+      .pipe(
+        switchMap((map: ParamMap) => {
+          let cat = map.get('category');
+          if (cat) this.category = cat;
+          return this._movieService.getByCategory(this.category);
+        })
+      )
+      .subscribe((data: string[]) => (this.typesArray = data));
   }
 }

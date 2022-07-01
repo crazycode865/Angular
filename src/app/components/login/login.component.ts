@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/modules/movie/models/user';
 import { LoginService } from 'src/app/modules/movie/services/login.service';
 
 @Component({
@@ -44,7 +43,7 @@ export class LoginComponent implements OnInit {
       loginInfo.value.password != null
     ) {
       this._loginService.generateToken(loginInfo.value).subscribe({
-        next: (response: any) => {
+        next: (response: string) => {
           this._loginService.loginUser(response);
           localStorage.setItem('token', response);
           if (!response) this._router.navigate(['login']);

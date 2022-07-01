@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { map, switchMap } from 'rxjs';
 import { Booking } from '../../models/booking';
 import { Movie } from '../../models/movie';
 import { BookingService } from '../../services/booking.service';
@@ -20,13 +20,18 @@ export class BookingDetailsComponent implements OnInit {
   bookingId!: number;
   bookingDetails!: Booking;
   ngOnInit(): void {
-    this._activatedRoute.paramMap.subscribe((map) => {
-      let bkId = map.get('booking-id');
-      if (bkId) this.bookingId = parseInt(bkId);
-      console.log(` In Booking Details : ${this.bookingId}`);
-      this._bookingService.getById(this.bookingId).subscribe({
-        next: (data) => (this.bookingDetails = data),
+    this._activatedRoute.paramMap
+      .pipe(
+        switchMap((map: ParamMap) => {
+          let bkId = map.get('booking-id');
+          if (bkId) this.bookingId = parseInt(bkId);
+          console.log(` In Booking Details : ${this.bookingId}`);
+
+          return this._bookingService.getById(this.bookingId);
+        })
+      )
+      .subscribe((data) => {
+        this.bookingDetails = data;
       });
-    });
   }
 }
